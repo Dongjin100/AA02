@@ -1,0 +1,205 @@
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+
+	<!-- Plotly.js -->
+
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+
+<body>
+
+	<h1>Date visualization by AA02</h1>
+
+	<hr>
+
+	<h2>Time series by aa02</h2>
+
+ 
+
+	<!-- Plotly chart will be drawn inside this DIV -->
+
+	<div id="myDiv" style="width: 900px;height: 600px"></div>
+
+	
+
+	<script>
+
+		<!-- JAVASCRIPT CODE GOES HERE -->
+
+ 
+
+		Plotly.d3.csv("data/AA02_s1000.csv", function(err, rows){
+
+ 
+
+			function unpack(rows, key) {
+
+				return rows.map(function(row) { return row[key]; });
+
+			}
+
+ 
+
+			var trace1 = {
+
+				type: "scatter",
+
+				mode: "lines",
+
+				name: 'Temperature',
+
+				x: unpack(rows, 'date'),
+
+				y: unpack(rows, 'temperature'),
+
+				line: {color: '#fc1234'}
+
+			}
+
+ 
+
+			var trace2 = {
+
+				type: "scatter",
+
+				mode: "lines",
+
+				name: 'Humidity',
+
+				x: unpack(rows, 'date'),
+
+				y: unpack(rows, 'humidity'),
+
+				line: {color: '#3412fc'}
+
+			}
+
+ 
+
+			var trace3 = {
+
+				type: "scatter",
+
+				mode: "lines",
+
+				name: 'Luminosity',
+
+				x: unpack(rows, 'date'),
+
+				y: unpack(rows, 'luminosity'),
+
+				line: {color: '#34fc12'}
+
+			}
+
+ 
+
+			var data = [trace1,trace2,trace3];
+
+ 
+
+			var layout = {
+
+				title: 'IOT data with rangeslider',
+
+				xaxis: {
+
+					autorange: true,
+
+					//range: [date[0], date[date.length-1]],
+
+					range: ['2019-11-27 16:59:50', '2019-11-27 16:21:54'],
+
+					rangeselector: {buttons: [
+
+						{
+
+							count: 10,
+
+							label: '10 second',
+
+							step: 'second',
+
+							stepmode: 'backward'
+
+						},
+
+						{
+
+							count: 30,
+
+							label: '30 second',
+
+							step: 'second',
+
+							stepmode: 'backward'
+
+						},
+
+						{
+
+							count: 1,
+
+							label: '1 minute',
+
+							step: 'minute',
+
+							stepmode: 'backward'
+
+						},
+
+						{
+
+							count: 16,
+
+							label: '16 minute',
+
+							step: 'minute',
+
+							stepmode: 'backward'
+
+						},
+
+						{step: 'all'}
+
+						]},
+
+						rangeslider: {range: ['2019-11-27 16:59:50', '2019-11-27 16:21:54']},
+
+						type: 'date'
+
+					},
+
+					yaxis: {
+
+						autorange: true,
+
+						range: [0, 300],
+
+						type: 'linear'
+
+					}
+
+				};
+
+ 
+
+				Plotly.newPlot('myDiv', data, layout);
+
+			})		
+
+ 
+
+		</script>
+
+ 
+
+	</body>
+
+</html>	
+
+ 
