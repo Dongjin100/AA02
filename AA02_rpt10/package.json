@@ -12,6 +12,6 @@
     "express": "^4.17.1",
     "mongoose": "^5.7.12",
     "serialport": "^4.0.7",
-    "socket.io": "^1.7.3"
+    "socket.io": "^4.5.3"
   }
 }
