@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mongoose": "^5.7.11",
     "serialport": "^4.0.7",
     "socket.io": "^1.7.3"
